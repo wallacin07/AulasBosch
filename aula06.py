@@ -43,7 +43,7 @@ for i in infgeral:
 r.write(f'A maior media foi de {maiormedia} de {alunonotaalta}') 
 r.close()'''
 
-def mostrarcardapio():
+'''def mostrarcardapio():
     with open('cardapio.txt', 'r') as f:
         for cardapio in f:
             itens = cardapio.strip('\n')
@@ -58,7 +58,7 @@ porção_valida = False
 while True:
     modalidades = input(' \nDigite qual modalidade você quer \n1 - livre\n2 - combo\n--')
     while True:
-        with open('listapedidos.txt', 'w')as p:
+        with open('listapedidos.txt', 'a')as p:
                 while True:
                     nome = input('Como você gostaria de ser chamado\n-- ')
                     if not nome.isalpha():
@@ -95,7 +95,7 @@ while True:
                             
                     if comida_valida and bebida_valida and porção_valida:
                         print(f'Voce escolheu {comida}, com refri {bebida}, e porção de {porção}')
-                        p.write(f'nome: {nome}, Comida: {comida}, bebida :{bebida}, porção {porção}')
+                        p.write(f'nome: {nome}, Comida: {comida}, bebida :{bebida}, porção {porção}\n')
                         break
                     else :
                         print('\nPedido invalido, pfv fazer novamente')
@@ -121,19 +121,19 @@ while True:
                         else:
                             print('Combo invalido, pfv digite novamente\n')
                         if combo1_valido:
-                            p.write(f'{nome}: Hamburguer, Refrigerante e Fritas')
+                            p.write(f'{nome}: Hamburguer, Refrigerante e Fritas\n')
                             break
                         elif combo2_valido:
-                            p.write(f'{nome}: Hot Dog, Refrigerante e Frango') 
+                            p.write(f'{nome}: Hot Dog, Refrigerante e Frango\n') 
                             break   
 
 
     continuar_pedido = input('Voce quer fazer outro pedido?\n1 - Sim\n0 - não\n-- ')
     if continuar_pedido == '0':
-            break
+            break'''
 
 
-'''def contarpalavras():
+def contarpalavras():
     palavras_distintas = {}
     with open('texto_exemplo.txt', 'r') as f:
         for linhas in f:
@@ -155,4 +155,4 @@ while True:
             d.write(f'{todaspalavras}\n')
 
 
-contarpalavras()                  '''  
+contarpalavras()                  
