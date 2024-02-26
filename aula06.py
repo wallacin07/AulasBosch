@@ -43,20 +43,6 @@ for i in infgeral:
 r.write(f'A maior media foi de {maiormedia} de {alunonotaalta}') 
 r.close()'''
 
-'''def contarpalavras():
-    palavras_distintas = {}
-    with open('arquivo.txt', 'r') as f:
-       for linha in f:
-         palavras = linha.split()
-         print(palavras)
-         for palavra in palavras:
-            palavra_limpa = palavra.lower().strip(".,!?; ")
-            if palavra_limpa not in palavras_distintas:
-             palavras_distintas[palavra_limpa] = 0
-             palavras_distintas[palavra_limpa] += 1
-    print(palavras_distintas)
-contarpalavras()'''
-
 def mostrarcardapio():
     with open('cardapio.txt', 'r') as f:
         for cardapio in f:
@@ -72,79 +58,101 @@ porção_valida = False
 while True:
     modalidades = input(' \nDigite qual modalidade você quer \n1 - livre\n2 - combo\n--')
     while True:
-        if modalidades ==  '1':
-            with open('listapedidos.txt', 'w')as p:
+        with open('listapedidos.txt', 'w')as p:
                 while True:
                     nome = input('Como você gostaria de ser chamado\n-- ')
                     if not nome.isalpha():
                         print('Nome invalido')
                     else:
                         break
-            comida = input('Digite a comida que voce quer\n-- ').lower()
-            if comida == 'hamburguer':
-                print('Você escolheu ', comida)
-                comida_valida = True
-                break
-            elif comida == 'hot dog':
-                print('Você escolheu ', comida)
-                comida_valida = True
-                break              
-            bebida = input('Digite a bebida que voce quer\n-- ').lower()
-            if bebida == 'coca cola':
-                print('Você escolheu ', bebida)
-                bebida_valida = True
-                break
-            elif bebida ==  'guarana': 
-                 print('Você escolheu ', bebida)
-                 bebida_valida = True
-                 break            
-            porção = input('Digite a porção que voce quer \n-- ').lower()    
-            if porção == 'frango':
-                    print('Você escolheu ', porção)
-                    porção_valida = True
-                    break
-            elif porção == 'fritas': 
-                 print('Você escolheu ', porção)
-                 porção_valida = True
-                 break      
-            if comida_valida and bebida_valida and porção_valida:
-                print(f'Voce escolheu {comida}, com refri {bebida}, e porção de {porção}')
-                p.write(f'{nome}, Comida: {comida}, bebida :{bebida}')
-                break
-            else :
-             print('\nPedido invalido, pfv fazer novamente')     
-    
-        if modalidades == '2':
-            with open('listapedidos.txt', 'w')as p:
-                while True:
-                    nome = input('Como você gostaria de ser chamado')
-                    if not nome.isalpha():
-                        print('Nome invalido')
-                    else:
+                if modalidades ==  '1':
+                    comida = input('Digite a comida que voce quer\n-- ').lower()
+                    if comida == 'hamburguer':
+                        print('Você escolheu ', comida)
+                        comida_valida = True
+                        
+                    elif comida == 'hot dog':
+                        print('Você escolheu ', comida)
+                        comida_valida = True
+                                    
+                    bebida = input('Digite a bebida que voce quer\n-- ').lower()
+                    if bebida == 'coca cola':
+                        print('Você escolheu ', bebida)
+                        bebida_valida = True
+                        
+                    elif bebida ==  'guarana': 
+                        print('Você escolheu ', bebida)
+                        bebida_valida = True
+                                
+                    porção = input('Digite a porção que voce quer \n-- ').lower()    
+                    if porção == 'frango':
+                            print('Você escolheu ', porção)
+                            porção_valida = True
+                            break
+                    elif porção == 'fritas': 
+                        print('Você escolheu ', porção)
+                        porção_valida = True
+                            
+                    if comida_valida and bebida_valida and porção_valida:
+                        print(f'Voce escolheu {comida}, com refri {bebida}, e porção de {porção}')
+                        p.write(f'nome: {nome}, Comida: {comida}, bebida :{bebida}, porção {porção}')
                         break
-            combo = input('Você quer o combo um ou combo dois? \n--').lower()
-            if combo == '1':
-                print('Você escolheu o combo um')
-                combo1_valido = True
-                break
-    
-            elif combo == 'um':
-                print('Você escolheu o combo um')
-                combo1_valido = True
-                break
-            elif combo == '2':
-                print('Você escolheu o combo dois')
-                combo2_valido = True
-                break
-            elif combo == 'dois':
-                print('Você escolheu o combo dois')
-                combo2_valido = True
-                break
-            else:
-                print('Combo invalido, pfv digite novamente\n')
-            if combo1_valido:
-                p.write(f'{nome}, Hamburguer, Refrigerante e Fritas')
-            elif combo2_valido:
-                p.write(f'{nome}, Hot Dog, Refrigerante e Frango')          
+                    else :
+                        print('\nPedido invalido, pfv fazer novamente')
+                if modalidades == '2':
+                        combo = input('Você quer o combo um ou combo dois? \n--').lower()
+                        if combo == '1':
+                            print('Você escolheu o combo um')
+                            combo1_valido = True
+                            
+                
+                        elif combo == 'um':
+                            print('Você escolheu o combo um')
+                            combo1_valido = True
+                            
+                        elif combo == '2':
+                            print('Você escolheu o combo dois')
+                            combo2_valido = True
+                        
+                        elif combo == 'dois':
+                            print('Você escolheu o combo dois')
+                            combo2_valido = True
+                        
+                        else:
+                            print('Combo invalido, pfv digite novamente\n')
+                        if combo1_valido:
+                            p.write(f'{nome}: Hamburguer, Refrigerante e Fritas')
+                            break
+                        elif combo2_valido:
+                            p.write(f'{nome}: Hot Dog, Refrigerante e Frango') 
+                            break   
 
-                    
+
+    continuar_pedido = input('Voce quer fazer outro pedido?\n1 - Sim\n0 - não\n-- ')
+    if continuar_pedido == '0':
+            break
+
+
+'''def contarpalavras():
+    palavras_distintas = {}
+    with open('texto_exemplo.txt', 'r') as f:
+        for linhas in f:
+            palavras = linhas.split()
+            print(palavras)
+            for palavra in palavras:
+                palavra_formatada = palavra.strip(',.!?;')
+                print(palavra_formatada)
+                if not palavra_formatada in palavras_distintas:
+                    palavras_distintas[palavra_formatada] = 0
+                    palavras_distintas[palavra_formatada] += 1
+        print(palavras_distintas)            
+    with open('palavrasdistintas.txt', 'w') as d:
+        convertidos = list(palavras_distintas.keys())
+        for i in convertidos:
+            todaspalavras = i.split()
+            todaspalavras = i.strip(',.!?;')
+            print(todaspalavras)
+            d.write(f'{todaspalavras}\n')
+
+
+contarpalavras()                  '''  
